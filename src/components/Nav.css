@@ -1,0 +1,83 @@
+.nav-bar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(100% - 40px), var(--content-width));
+  z-index: 100;
+  border-radius: 999px;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px 10px 14px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.nav-logo-text {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .nav-logo-text {
+    display: inline-block;
+  }
+}
+
+.nav-links {
+  display: none;
+  gap: 28px;
+}
+
+@media (min-width: 900px) {
+  .nav-links {
+    display: flex;
+  }
+}
+
+.nav-link {
+  color: var(--text-dim);
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-contact {
+  padding: 10px 20px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 手机屏幕太窄的时候,声音开关先藏起来,优先保住 Contact 按钮不被挤变形 */
+@media (max-width: 420px) {
+  .nav-actions .sound-toggle {
+    display: none;
+  }
+}

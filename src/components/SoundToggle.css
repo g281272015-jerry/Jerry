@@ -1,0 +1,70 @@
+.sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-dim);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.sound-toggle:hover {
+  border-color: var(--red);
+  color: var(--text);
+}
+
+.sound-toggle-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.sound-toggle-bars i {
+  display: block;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--red);
+  transform-origin: bottom;
+  animation: sound-bar-bounce 0.9s ease-in-out infinite;
+}
+
+.sound-toggle-bars i:nth-child(1) {
+  height: 40%;
+  animation-delay: 0s;
+}
+.sound-toggle-bars i:nth-child(2) {
+  height: 100%;
+  animation-delay: 0.15s;
+}
+.sound-toggle-bars i:nth-child(3) {
+  height: 65%;
+  animation-delay: 0.3s;
+}
+
+@keyframes sound-bar-bounce {
+  0%, 100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* 静音状态:小竖条停在原地不跳,颜色也变暗,一眼就能看出关掉了 */
+.sound-toggle.is-muted .sound-toggle-bars i {
+  animation-play-state: paused;
+  background: var(--text-faint);
+  transform: scaleY(0.3);
+}
+
+@media (max-width: 480px) {
+  .sound-toggle-label {
+    display: none;
+  }
+  .sound-toggle {
+    padding: 8px 10px;
+  }
+}

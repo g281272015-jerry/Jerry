@@ -1,0 +1,14 @@
+/* IP2 —— 复用 AccordionGallery 横向手风琴
+   ------------------------------------------------------------
+   样式和 IP1 的书架完全一致；这一份只保留 ip2 段需要的微调。
+   橘色描边由 AccordionGallery 内部的 .ag-panel--active 控制
+   （鼠标停在哪个书脊、哪个书脊描边）。
+*/
+
+.ip2-accordion-wrap {
+  margin-top: 48px;
+}
+
+@media (max-width: 700px) {
+  .ip2-accordion-wrap { margin-top: 30px; }
+}

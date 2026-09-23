@@ -1,0 +1,12 @@
+.orbit-images { position: relative; width: 100%; aspect-ratio: 1400 / 760; overflow: hidden; isolation: isolate; }
+.orbit-images::before { content: ""; position: absolute; inset: 9% 7%; border: 1px dashed rgba(255,255,255,.12); border-radius: 50%; transform: rotate(-8deg); pointer-events: none; }
+.orbit-images-stage { position: absolute; left: 50%; top: 50%; width: 1400px; height: 760px; transform-origin: center; }
+.orbit-item { position: absolute; width: 218px; height: 178px; margin: -89px 0 0 -109px; will-change: transform; }
+.orbit-card { display: block; width: 100%; padding: 0; text-align: left; color: var(--text); background: transparent; border: 0; cursor: pointer; transform: rotate(8deg); transition: transform .3s ease, filter .3s ease; }
+.orbit-card:hover, .orbit-card:focus-visible { transform: rotate(8deg) translateY(-10px) scale(1.05); filter: drop-shadow(0 18px 22px rgba(0,0,0,.5)); outline: none; }
+.orbit-card-media { display: block; overflow: hidden; border: 1px solid rgba(255,255,255,.22); border-radius: 16px; background: var(--bg-elevated); box-shadow: 0 16px 30px -20px rgba(0,0,0,.9); }
+.orbit-card-media img { display: block; width: 100%; aspect-ratio: 1.414 / 1; object-fit: cover; }
+.orbit-card-meta { display: flex; flex-direction: column; gap: 4px; padding: 8px 2px; }
+.orbit-card-meta b { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; }.orbit-card-meta small { color: var(--text-dim); font-size: 12px; }
+.orbit-images-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; }
+@media (max-width: 700px) { .orbit-images { aspect-ratio: 1 / 1.1; overflow: visible; }.orbit-images::before { inset: 13% 2%; }.orbit-item { width: 180px; height: 146px; margin: -73px 0 0 -90px; }.orbit-card-meta b { font-size: 9px; }.orbit-card-meta small { font-size: 10px; } }

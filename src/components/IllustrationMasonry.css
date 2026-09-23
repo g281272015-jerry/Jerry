@@ -1,0 +1,100 @@
+/* Illustration —— 单容器竖向滚动版式
+   ------------------------------------------------------------
+   - .illustration-stage 是固定高度的盒子,内部 overflow-y:auto
+   - .masonry 用 CSS columns 多列布局:图片保留各自原始比例,
+     浏览器自动流到最短的那一列,像 Pinterest 那样填满
+   - 3 列起步,1200 减到 2 列,800 减到 1 列
+   - 不再有点开看详情 / Lightbox,所有图都在同一屏里能滚到看到
+*/
+
+.illustration-stage {
+  position: relative;
+  margin-top: 48px;
+  /* 给一个明确的最大高度,超出部分在 .illustration-masonry-scroll 内滚动 */
+  height: min(860px, 86vh);
+  overflow: hidden;
+  border-radius: var(--radius-m);
+}
+
+.illustration-masonry-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  padding: 24px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+.illustration-masonry-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.illustration-masonry-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+
+.masonry {
+  column-count: 3;
+  column-gap: 18px;
+}
+
+.masonry-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 0 22px;
+  break-inside: avoid;
+  padding: 0;
+  border: none;
+  text-align: left;
+  background: none;
+}
+
+.masonry-thumb {
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: #0a0a0b;
+}
+
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.03);
+}
+
+.masonry-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 2px 0;
+}
+
+.masonry-caption-en {
+  color: var(--text);
+  letter-spacing: 0.04em;
+  font-size: 11px;
+}
+
+.masonry-caption-cjk {
+  color: var(--text-dim);
+  font-size: 13px;
+  font-family: var(--font-cjk);
+}
+
+@media (max-width: 1200px) {
+  .masonry { column-count: 2; }
+}
+@media (max-width: 800px) {
+  .masonry { column-count: 1; }
+}
+@media (max-width: 600px) {
+  .illustration-stage { height: min(700px, 80vh); }
+  .illustration-masonry-scroll { padding: 16px; }
+}

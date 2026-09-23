@@ -1,0 +1,70 @@
+.tilt-card-wrap {
+  perspective: 1400px;
+  width: 100%;
+  max-width: 440px;
+  cursor: pointer;
+}
+
+.tilt-card-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.55));
+  will-change: transform;
+}
+
+.tilt-card-inner .profile-id-card-img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  filter: none;
+}
+
+/* 跟着鼠标位置移动的那一小片高光 */
+.tilt-card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* 划过去的时候扫过卡片表面的那道"彗星"光斑 */
+.tilt-card-comet {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.6) 48%,
+    rgba(255, 130, 100, 0.35) 53%,
+    transparent 66%
+  );
+  background-size: 260% 260%;
+  background-position: -70% -70%;
+  transition: background-position 1.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.tilt-card-wrap:hover .tilt-card-comet {
+  background-position: 170% 170%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt-card-inner,
+  .tilt-card-comet {
+    transition: none;
+  }
+}

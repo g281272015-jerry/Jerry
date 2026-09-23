@@ -1,0 +1,234 @@
+/* 这一屏被拉高到 3 倍屏幕高度,配合下面 .outro-sticky 的 position:sticky,
+   实现"滚多少、播多少"的滚轮滑动播放效果——滚动条在这段区域里
+   走的距离,就是视频播放进度条走的距离。 */
+.outro-region {
+  position: relative;
+  height: 100vh;
+}
+
+.outro-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.outro-poster,
+.outro-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.outro-poster {
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.outro-video {
+  z-index: 1;
+}
+
+/* 平板举起来、定格之后,叠在屏幕上的真实按钮(不是画在视频里的)——
+   这一版去掉了整块的实心底色,不再是一整个不透明的卡片盖在视频上,
+   而是每个按钮自己带一圈发光描边"浮"在画面上,视频本身(包括举着
+   平板的手)都还能透出来看得见。 */
+.outro-device-ui {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(8px, 1.4vw, 16px);
+  padding: clamp(6px, 1.2vw, 16px);
+  border-radius: clamp(6px, 0.8vw, 14px);
+  background: none;
+}
+
+.outro-device-ui-eyebrow {
+  color: var(--red);
+  font-size: clamp(7px, 0.85vw, 12px);
+  letter-spacing: 0.18em;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+}
+
+/* 这块文字叠在视频里平板的屏幕范围内,大小被那块屏幕的实际
+   物理尺寸限制住了,不能像整页的大标题那样随便放到很大(不然
+   字会溢出平板屏幕、盖到手/边框上,看起来会很假)——但在这个
+   限制范围内,尽量把字重、字号、还有"关键词变红"这几个更有
+   设计感的元素都用上,让它更接近参考图那种"大字 + 重点词变红"
+   的效果。 */
+.outro-device-ui-headline {
+  font-family: var(--font-cjk);
+  font-weight: 900;
+  color: var(--text);
+  font-size: clamp(11px, 1.6vw, 24px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  max-width: 96%;
+  margin-bottom: clamp(3px, 0.5vw, 8px);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* 参考图里的重点词不是"跟前面字一样大只是变红",而是直接放大
+   一大截,分量感完全不一样——单独给一个大得多的字号。 */
+.outro-device-ui-accent {
+  display: inline-block;
+  color: var(--red);
+  font-size: clamp(22px, 3.4vw, 50px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9), 0 0 26px rgba(255, 60, 32, 0.6);
+}
+
+.outro-device-ui-sub {
+  color: rgba(230, 228, 226, 0.72);
+  font-size: clamp(7.5px, 0.85vw, 13px);
+  line-height: 1.5;
+  max-width: 90%;
+  margin: 0 0 clamp(4px, 0.6vw, 10px);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+}
+
+.outro-device-ui-rows {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(6px, 1vw, 14px);
+}
+
+/* 单个发光卡块——去掉了实心底色,只留发光描边,背景是透明的 */
+.outro-device-ui-row {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2px, 0.4vw, 5px);
+  padding: clamp(6px, 1.1vw, 14px) clamp(8px, 1.3vw, 16px);
+  border-radius: clamp(4px, 0.6vw, 10px);
+  border: 1px solid rgba(255, 90, 60, 0.65);
+  background: transparent;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 0 1px rgba(255, 70, 40, 0.12), 0 0 18px -6px rgba(255, 70, 40, 0.65);
+  color: var(--text);
+  font-size: clamp(7px, 0.8vw, 12px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.outro-device-ui-row:hover {
+  border-color: var(--red);
+  background: rgba(10, 5, 5, 0.35);
+  box-shadow: 0 0 0 1px var(--red), 0 0 24px -4px rgba(255, 70, 40, 0.9);
+  transform: translateY(-1px);
+}
+
+.outro-device-ui-row .mono-label {
+  color: rgba(255, 160, 130, 0.95);
+  font-size: clamp(6px, 0.62vw, 10px);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+}
+
+.outro-device-ui-value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+}
+
+/* 主按钮同样去掉实心底色,改成描边+发光,视频画面能透过去 */
+.outro-device-ui-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: clamp(2px, 0.4vw, 6px);
+  padding: clamp(6px, 1vw, 16px) 0;
+  border-radius: 999px;
+  border: 1.5px solid var(--red);
+  background: rgba(10, 5, 5, 0.25);
+  backdrop-filter: blur(2px);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(7px, 0.85vw, 13px);
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 0 24px -6px rgba(255, 66, 41, 0.85);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.outro-device-ui-cta:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 66, 41, 0.18);
+  box-shadow: 0 8px 28px -6px rgba(255, 66, 41, 0.95);
+}
+
+@media (max-width: 700px) {
+  .outro-device-ui {
+    display: none;
+  }
+}
+
+/* 底部加深一些,盖在视频上的大标题才看得清楚 */
+.outro-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 11, 0.1) 0%, rgba(10, 10, 11, 0.3) 50%, rgba(10, 10, 11, 0.94) 100%);
+  pointer-events: none;
+}
+
+/* 之前这里没设 pointer-events,虽然文字只贴在底部,但这个容器
+   本身还是撑满了整个屏幕高度,会挡在按钮(z-index 更低)上面
+   吃掉点击——导致按钮点不动。这里设成 none,点击可以穿透到
+   下面真正的按钮上;文字本身不需要被点击,不影响可读性。 */
+.outro-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 48px;
+  pointer-events: none;
+}
+
+.outro-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-dim);
+}
+
+.outro-eyebrow .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 12px 2px var(--red);
+}
+
+/* 叠在视频上面的收尾大标题(参考的是联系方式模块的标题排版) */
+.outro-headline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 14px 0 0;
+  text-wrap: balance;
+}
+
+.outro-headline-cn {
+  font-family: var(--font-cjk);
+  font-size: 14px;
+  color: var(--text-dim);
+  margin: 28px 0 0;
+  letter-spacing: 0.02em;
+}

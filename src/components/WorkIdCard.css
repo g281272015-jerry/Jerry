@@ -1,0 +1,278 @@
+/* 工卡照片 —— "PERSONNEL ARCHIVE" 工作证版式
+   ------------------------------------------------------------
+   整张卡片是一个略带角度的"被夹住的工卡":
+   - 顶部是深色贴纸条,左边小地球 + PERSONNEL ARCHIVE,右边 ID.编号
+   - 中间是照片区域,带金属夹子 + 四个角的描边
+   - 底部是姓名 / 角色 / 地点 / 条码 / 右侧小字
+   - 右下角一个 "↗" 箭头 */
+
+.work-id-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #f6f5f0 0%, #ecebe5 100%);
+  color: #1a1a1a;
+  border-radius: 14px;
+  padding: 0 0 18px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45),
+    0 2px 0 rgba(255, 255, 255, 0.04) inset;
+  font-family: var(--font-body);
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* 整体往左下略微倾斜一点点,贴合"贴在工牌夹子里"的样子 */
+.work-id-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.03) 0 6px,
+    rgba(0, 0, 0, 0) 6px 12px
+  );
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+/* 顶部 PERSONNEL ARCHIVE 贴纸条 */
+.work-id-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #1a1a1a;
+  color: #f4f1ea;
+  border-radius: 14px 14px 0 0;
+  position: relative;
+  z-index: 2;
+}
+
+.work-id-card-top-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  line-height: 1.1;
+  color: #f4f1ea;
+}
+
+.work-id-card-top-left .work-id-card-top-label {
+  display: block;
+}
+
+.work-id-globe {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  color: #f4f1ea;
+  margin-right: 2px;
+}
+
+.work-id-globe svg {
+  width: 100%;
+  height: 100%;
+}
+
+.work-id-card-top-right {
+  color: #d6d2c8;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+}
+
+/* 中间照片区域 */
+.work-id-card-body {
+  position: relative;
+  margin: 14px 16px 0;
+  aspect-ratio: 4 / 5;
+  background: #111;
+  overflow: hidden;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+/* 顶部那个银色夹子 */
+.work-id-card-clip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 28px;
+  background: linear-gradient(180deg, #d8d6cf 0%, #9e9a90 60%, #62605b 100%);
+  border-radius: 4px;
+  z-index: 4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.work-id-card-clip::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f4f1ea 0%, #b2ada3 70%);
+  border: 2px solid #2c2a26;
+}
+
+.work-id-card-frame {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: #f4f1ea;
+  border-style: solid;
+  border-width: 0;
+  z-index: 3;
+}
+.work-id-card-frame.top-left { top: 8px; left: 8px; border-top-width: 2px; border-left-width: 2px; }
+.work-id-card-frame.top-right { top: 8px; right: 8px; border-top-width: 2px; border-right-width: 2px; }
+.work-id-card-frame.bottom-left { bottom: 8px; left: 8px; border-bottom-width: 2px; border-left-width: 2px; }
+.work-id-card-frame.bottom-right { bottom: 8px; right: 8px; border-bottom-width: 2px; border-right-width: 2px; }
+
+.work-id-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.04) saturate(1.05);
+}
+
+/* 底部姓名 + 角色 + 地点 + 条码 */
+.work-id-card-foot {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 18px 0;
+  z-index: 2;
+}
+
+.work-id-card-foot-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.work-id-card-name {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: #1a1a1a;
+  margin: 6px 0 4px;
+}
+
+.work-id-card-name-cn {
+  font-family: var(--font-cjk);
+  font-weight: 900;
+  font-size: 0.86em;
+  color: #1a1a1a;
+}
+
+.work-id-card-role {
+  color: #5a574f;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.work-id-card-role-cn {
+  font-family: var(--font-cjk);
+  font-size: 12px;
+  color: #4d4a44;
+  margin-bottom: 12px;
+}
+
+.work-id-card-foot-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.work-id-card-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #1a1a1a;
+  letter-spacing: 0.12em;
+}
+
+.work-id-card-pin {
+  width: 12px;
+  height: 16px;
+  display: inline-flex;
+  color: #1a1a1a;
+}
+.work-id-card-pin svg { width: 100%; height: 100%; }
+
+/* 右侧一排粗细不一的条码小竖条 */
+.work-id-card-barcodes {
+  display: inline-flex;
+  align-items: stretch;
+  height: 22px;
+  gap: 1px;
+}
+.work-id-bar {
+  display: inline-block;
+  width: 2px;
+  background: #1a1a1a;
+}
+.work-id-bar[data-i="0"] { width: 1px; }
+.work-id-bar[data-i="1"] { width: 2px; }
+.work-id-bar[data-i="2"] { width: 1px; }
+.work-id-bar[data-i="3"] { width: 3px; }
+.work-id-bar[data-i="4"] { width: 1px; }
+.work-id-bar[data-i="5"] { width: 2px; }
+.work-id-bar[data-i="6"] { width: 1px; }
+.work-id-bar[data-i="7"] { width: 2px; }
+.work-id-bar[data-i="8"] { width: 1px; }
+
+.work-id-card-foot-side {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: #4d4a44;
+  text-align: left;
+  line-height: 1.45;
+  white-space: nowrap;
+  padding-bottom: 2px;
+}
+
+/* 右下角小箭头 */
+.work-id-card-arrow {
+  position: absolute;
+  right: 18px;
+  bottom: -6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #f4f1ea;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+@media (max-width: 720px) {
+  .work-id-card-foot-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .work-id-card-foot-side { display: none; }
+}

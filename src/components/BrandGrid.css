@@ -1,0 +1,38 @@
+.brand-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; }
+.brand-heading p { max-width: 380px; margin: 0 0 8px; color: var(--text-dim); font-size: 14px; line-height: 1.65; }
+.brand-explorer { display: grid; grid-template-columns: minmax(250px, .28fr) minmax(0, 1fr); margin-top: 48px; overflow: hidden; border-radius: var(--radius-m); }
+.brand-category-nav { padding: 20px 0; border-right: 1px solid var(--glass-border); background: rgba(255,255,255,.015); }
+.brand-nav-kicker { display: block; padding: 0 22px 15px; color: var(--text-dim); border-bottom: 1px solid var(--glass-border); }
+.brand-category-nav button { position: relative; display: grid; grid-template-columns: 28px 1fr auto; gap: 4px 10px; width: 100%; padding: 19px 22px; text-align: left; color: var(--text-dim); background: transparent; border: 0; border-left: 3px solid transparent; cursor: pointer; transition: .25s ease; }
+.brand-category-nav button:hover { color: var(--text); background: rgba(255,255,255,.035); }
+.brand-category-nav button.is-active { color: var(--text); border-left-color: var(--red); background: linear-gradient(90deg,rgba(255,60,32,.13),transparent); }
+.brand-category-index { grid-row: 1 / span 2; color: var(--red); padding-top: 3px; }
+.brand-category-title { font-family: var(--font-display); font-size: 16px; font-weight: 800; line-height: 1.1; letter-spacing: .01em; }
+.brand-category-cn { grid-column: 2; font-size: 13px; }.brand-category-count { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
+
+/* 容器维持限高 + 内部滚动,所有图都在容器里完整展示,
+   不会把页面撑得很长 —— 滚动条在 .brand-gallery-panel 内部 */
+.brand-gallery-panel { min-width: 0; max-height: min(980px, 82vh); overflow-y: auto; scroll-behavior: smooth; }
+.brand-gallery-head { display: flex; justify-content: space-between; gap: 28px; padding: 28px 30px 22px; border-bottom: 1px solid var(--glass-border); position: sticky; top: 0; background: rgba(6,6,7,0.92); backdrop-filter: blur(10px); z-index: 5; }
+.brand-gallery-index { color: var(--red); }.brand-gallery-head h3 { margin: 8px 0 0; font-family: var(--font-display); font-size: clamp(22px, 2vw, 34px); line-height: 1; letter-spacing: -.03em; }
+.brand-gallery-head h3 span { display: block; margin-top: 7px; font-family: var(--font-body); font-size: 14px; font-weight: 500; letter-spacing: 0; color: var(--text-dim); }
+.brand-gallery-meta { max-width: 310px; font-size: 13px; color: var(--text-dim); line-height: 1.55; }.brand-gallery-meta p { margin: 0 0 12px; }.brand-gallery-meta .chip { margin: 0 5px 5px 0; font-size: 9px; }
+
+/* 一次一行一张图 —— 每张图占满整行,不限高,完整显示原比例 */
+.brand-gallery { display: flex; flex-direction: column; align-items: stretch; gap: 26px; padding: 26px; }
+.brand-gallery-item { width: 100%; min-width: 0; margin: 0; }
+
+.brand-gallery-media { overflow: hidden; border: 1px solid rgba(255,255,255,.08); background: #0c0c0e; border-radius: var(--radius-s); }
+.brand-gallery-media img {
+  display: block;
+  width: 100%;
+  height: auto;          /* 不限高 —— 图片按原始比例完整展开 */
+  object-fit: contain;
+  transition: transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.brand-gallery-item:hover img { transform: scale(1.005); }
+.brand-gallery-item figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 10px 2px 3px; color: var(--text-dim); font-size: 12px; }
+.brand-gallery-item figcaption .mono-label { color: var(--red); }
+
+@media (max-width: 900px) { .brand-heading{display:block}.brand-heading p{margin-top:16px}.brand-explorer{grid-template-columns:1fr}.brand-category-nav{display:flex; overflow-x:auto; padding:0; border-right:0; border-bottom:1px solid var(--glass-border)}.brand-nav-kicker{display:none}.brand-category-nav button{flex:0 0 190px;padding:15px;border-left:0;border-bottom:3px solid transparent}.brand-category-nav button.is-active{border-left:0;border-bottom-color:var(--red)}.brand-gallery-head{padding:24px 20px; position: static}.brand-gallery{padding:14px;gap:18px} }
+@media (max-width: 560px) { .brand-explorer{margin-top:30px}.brand-category-nav button{flex-basis:160px;padding:13px}.brand-category-title{font-size:13px}.brand-category-cn{font-size:12px}.brand-gallery-head{display:block}.brand-gallery-meta{margin-top:16px}.brand-gallery{padding:14px;gap:16px} }

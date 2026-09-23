@@ -1,0 +1,193 @@
+.hero-region {
+  position: relative;
+  height: 100vh;
+}
+
+.hero-sticky {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.hero-poster,
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-poster {
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.hero-video {
+  z-index: 1;
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 11, 0.15) 0%, rgba(10, 10, 11, 0.35) 55%, rgba(10, 10, 11, 0.92) 100%),
+    linear-gradient(90deg, rgba(10, 10, 11, 0.85) 0%, rgba(10, 10, 11, 0.15) 45%, rgba(10, 10, 11, 0) 65%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 140px;
+  padding-bottom: 48px;
+}
+
+.hero-title-block {
+  max-width: 100%;
+}
+
+.hero-title-row {
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.hero-title-word {
+  display: inline-block;
+  font-family: var(--font-hero);
+  font-weight: 400; /* Anton 本身只有一个粗细,但笔画天生就很粗很重 */
+  font-size: clamp(72px, 12vw, 200px); /* 姓名主标题尺寸 */
+  line-height: 0.86;
+  letter-spacing: 0;
+  text-transform: none; /* Anton 大小写字形不同,保留大小写混排的效果 */
+}
+
+/* "Portfolio" 这一行原来是截图抠出来的图片,裁切打字效果边缘发虚
+   使用与姓名相同的 Anton 字体。字号比第一版
+   缩小了(大概相当于少了3个字母的宽度),字间距也收紧了一点,
+   不会再顶到屏幕边缘、被视频画面挡住了。 */
+.hero-title-portfolio {
+  font-size: clamp(100px, 16vw, 280px);
+  letter-spacing: -0.05em;
+  transform: scaleY(1.333);
+  transform-origin: left bottom;
+}
+
+/* 打字机光标——细细一条竖线,不停闪烁,像真的打字机/终端在敲字 */
+.hero-type-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  margin-left: 3px;
+  background: var(--red);
+  vertical-align: -0.05em;
+  animation: hero-cursor-blink 0.85s steps(1) infinite;
+}
+
+@keyframes hero-cursor-blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.hero-title-word.accent {
+  color: var(--red);
+}
+
+.hero-title-word.plain {
+  color: var(--white);
+}
+
+.hero-cjk-tag {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  color: var(--text-dim);
+  margin: 10px 0 22px 4px;
+  text-transform: uppercase;
+}
+
+.hero-roles {
+  list-style: none;
+  margin: 18px 0 26px;
+  padding: 0 0 0 20px;
+  border-left: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.hero-designby {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 20px;
+  width: fit-content;
+}
+
+.hero-designby strong {
+  font-family: var(--font-cjk);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.hero-bottom-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.hero-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  text-align: right;
+}
+
+.hero-scroll-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  animation: hero-bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes hero-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@media (max-width: 700px) {
+  .hero-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-scroll-indicator {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

@@ -1,0 +1,12 @@
+.ip-accordion-wrap {
+  margin-top: 48px;
+  /* 橘色描边由 AccordionGallery 内部的 .ag-panel--active 控制（鼠标停在哪个书脊、哪个书脊描边） */
+}
+
+.ip-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
+.ip-status { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 9px; color: var(--text-dim); }
+.ip-status i { width: 7px; height: 7px; border-radius: 50%; background: var(--red); box-shadow: 0 0 12px var(--red); }
+
+@media (max-width: 700px) {
+  .ip-accordion-wrap { margin-top: 30px; }
+}
