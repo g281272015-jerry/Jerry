@@ -1,7 +1,7 @@
 import { publicAsset } from "../utils/publicAsset.js";
 
 const graphic = (number) =>
-  publicAsset(`/portfolio/graphics/graphic_${String(number).padStart(2, "0")}.png`);
+  publicAsset(`/portfolio/graphics/graphic_${String(number).padStart(2, "0")}.jpg`);
 
 // 16 张 graphics 全部展开;标题先用占位,你可以直接在下面数组里
 // 替换每张图的中/英文标题,顺序也对应 graphic_01 ~ graphic_16。

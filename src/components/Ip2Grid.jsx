@@ -15,7 +15,7 @@ import "./Ip2Grid.css";
  */
 
 const ip2Asset = (number) =>
-  publicAsset(`/portfolio/ip2/ip2_${String(number).padStart(2, "0")}.png`);
+  publicAsset(`/portfolio/ip2/ip2_${String(number).padStart(2, "0")}.jpg`);
 
 // 11 个项目 —— 按图一里的标题填写，按 ip2_26 → 01、ip2_27 → 02 ... 顺次对应
 const ip2Projects = [

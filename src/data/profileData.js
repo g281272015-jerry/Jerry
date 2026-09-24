@@ -3,7 +3,7 @@ import { publicAsset } from "../utils/publicAsset.js";
 const companyLogo = (file) => publicAsset(`/portfolio/profile/${file}`);
 
 // 5 个 zxcvb 图按时间从新到旧依次分配给 5 段工作经历
-const logoByOrder = ["b.png", "c.png", "v.png", "x.png", "z.png"];
+const logoByOrder = ["b.jpg", "c.jpg", "v.jpg", "x.jpg", "z.jpg"];
 
 export const profile = {
   avatarCard: publicAsset("/portfolio/profile/01.jpg"),
@@ -88,16 +88,16 @@ export const profile = {
     },
   ],
   tools: [
-    { name: "Figma", icon: publicAsset("/portfolio/icon/icon_01.png") },
-    { name: "Illustrator", icon: publicAsset("/portfolio/icon/icon_02.png") },
-    { name: "Photoshop", icon: publicAsset("/portfolio/icon/icon_03.png") },
-    { name: "Premiere", icon: publicAsset("/portfolio/icon/icon_04.png") },
-    { name: "3ds Max", icon: publicAsset("/portfolio/icon/icon_05.png") },
-    { name: "AI Tools", icon: publicAsset("/portfolio/icon/icon_06.png") },
-    { name: "Adobe Express", icon: publicAsset("/portfolio/icon/icon_07.png") },
-    { name: "Lightroom", icon: publicAsset("/portfolio/icon/icon_08.png") },
-    { name: "Midjourney", icon: publicAsset("/portfolio/icon/icon_09.png") },
-    { name: "Notion", icon: publicAsset("/portfolio/icon/icon_10.png") },
-    { name: "Figma Canvas", icon: publicAsset("/portfolio/icon/icon_11.png") },
+    { name: "Figma", icon: publicAsset("/portfolio/icon/icon_01.jpg") },
+    { name: "Illustrator", icon: publicAsset("/portfolio/icon/icon_02.jpg") },
+    { name: "Photoshop", icon: publicAsset("/portfolio/icon/icon_03.jpg") },
+    { name: "Premiere", icon: publicAsset("/portfolio/icon/icon_04.jpg") },
+    { name: "3ds Max", icon: publicAsset("/portfolio/icon/icon_05.jpg") },
+    { name: "AI Tools", icon: publicAsset("/portfolio/icon/icon_06.jpg") },
+    { name: "Adobe Express", icon: publicAsset("/portfolio/icon/icon_07.jpg") },
+    { name: "Lightroom", icon: publicAsset("/portfolio/icon/icon_08.jpg") },
+    { name: "Midjourney", icon: publicAsset("/portfolio/icon/icon_09.jpg") },
+    { name: "Notion", icon: publicAsset("/portfolio/icon/icon_10.jpg") },
+    { name: "Figma Canvas", icon: publicAsset("/portfolio/icon/icon_11.jpg") },
   ],
 };

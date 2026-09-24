@@ -2,9 +2,9 @@ import { publicAsset } from "../utils/publicAsset.js";
 
 const brandAsset = (folder, file) => publicAsset(`/portfolio/brand/${folder}/${file}`);
 const ip1Asset = (number) =>
-  publicAsset(`/portfolio/ip1/ip_${String(number).padStart(2, "0")}.png`);
+  publicAsset(`/portfolio/ip1/ip_${String(number).padStart(2, "0")}.jpg`);
 const ip2Asset = (number) =>
-  publicAsset(`/portfolio/ip2/ip2_${String(number).padStart(2, "0")}.png`);
+  publicAsset(`/portfolio/ip2/ip2_${String(number).padStart(2, "0")}.jpg`);
 
 const files = (folder, list) =>
   list.map(([file, label, ratio = "landscape"]) => ({
@@ -22,10 +22,10 @@ export const brandCategories = [
     note: "Selected work produced across brand, interaction and campaign contexts.",
     tags: ["INTERACTION", "CAMPAIGN", "AIGC"],
     images: files("brand1", [
-      ["portrait-01.png", "实践经历总览", "portrait"],
-      ["portrait-02.png", "项目实践 01"], ["portrait-03.png", "项目实践 02"],
-      ["portrait-04.png", "项目实践 03"], ["portrait-05.png", "项目实践 04"],
-      ["portrait-06.png", "项目实践 05"],
+      ["portrait-01.jpg", "实践经历总览", "portrait"],
+      ["portrait-02.jpg", "项目实践 01"], ["portrait-03.jpg", "项目实践 02"],
+      ["portrait-04.jpg", "项目实践 03"], ["portrait-05.jpg", "项目实践 04"],
+      ["portrait-06.jpg", "项目实践 05"],
     ]),
   },
   {
@@ -36,7 +36,7 @@ export const brandCategories = [
     note: "Identity systems, packaging, campaign language and commercial visual direction.",
     tags: ["IDENTITY", "SYSTEM", "PACKAGING"],
     images: files("brand2", Array.from({ length: 13 }, (_, i) => [
-      `brand2_${String(i + 1).padStart(2, "0")}.png`, `品牌视觉 ${String(i + 1).padStart(2, "0")}`,
+      `brand2_${String(i + 1).padStart(2, "0")}.jpg`, `品牌视觉 ${String(i + 1).padStart(2, "0")}`,
     ])),
   },
   {
@@ -47,10 +47,10 @@ export const brandCategories = [
     note: "Interface explorations and digital product screens, presented in their original proportions.",
     tags: ["UI/UX", "PRODUCT", "INTERACTION"],
     images: files("brand3", [
-      ["brand3_01.png", "UI 设计 01"], ["brand3_02.png", "UI 设计 02", "portrait"], ["brand3_03.png", "UI 设计 03", "wide"],
-      ["brand3_04.png", "UI 设计 04"], ["brand3_05.png", "UI 设计 05", "portrait"], ["brand3_06.png", "UI 设计 06", "wide"],
-      ["brand3_07.png", "UI 设计 07"], ["brand3_08.png", "UI 设计 08", "wide"],
-      ["brand3_09.png", "UI 设计完整流程", "long"], ["brand3_10.png", "UI 设计 10"],
+      ["brand3_01.jpg", "UI 设计 01"], ["brand3_02.jpg", "UI 设计 02", "portrait"], ["brand3_03.jpg", "UI 设计 03", "wide"],
+      ["brand3_04.jpg", "UI 设计 04"], ["brand3_05.jpg", "UI 设计 05", "portrait"], ["brand3_06.jpg", "UI 设计 06", "wide"],
+      ["brand3_07.jpg", "UI 设计 07"], ["brand3_08.jpg", "UI 设计 08", "wide"],
+      ["brand3_09.jpg", "UI 设计完整流程", "long"], ["brand3_10.jpg", "UI 设计 10"],
     ]),
   },
   {
@@ -61,8 +61,8 @@ export const brandCategories = [
     note: "Poster-led visual studies for editorial, campaign and cultural communication.",
     tags: ["POSTER", "TYPOGRAPHY", "ART DIRECTION"],
     images: files("brand4", [
-      ["brand4_01.png", "海报设计 01"], ["brand4_02.png", "海报设计 02", "portrait"],
-      ["brand4_03.png", "海报设计 03"],
+      ["brand4_01.jpg", "海报设计 01"], ["brand4_02.jpg", "海报设计 02", "portrait"],
+      ["brand4_03.jpg", "海报设计 03"],
     ]),
   },
   // —— IP1 ——

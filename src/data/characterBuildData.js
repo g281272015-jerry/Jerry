@@ -21,10 +21,10 @@ export const characterProjects = Array.from({ length: 6 }, (_, index) => {
       image: publicAsset(`/placeholders/portrait-0${(viewIndex % 2) + 1}.svg`),
     })),
     turntable: {
-      video: publicAsset("/placeholders/videos/motion-study.webm"),
+      video: publicAsset("/placeholders/videos/motion-study.mp4"),
       poster: publicAsset("/placeholders/poster-video.svg"),
     },
-    video: publicAsset("/placeholders/videos/motion-study.webm"),
+    video: publicAsset("/placeholders/videos/motion-study.mp4"),
     poster: publicAsset("/placeholders/poster-video.svg"),
   };
 });

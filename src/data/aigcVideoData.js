@@ -8,7 +8,7 @@ export const aigcIntro = {
 
 export const aigcVideos = Array.from({ length: 6 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
-  const videoSrc = publicAsset("/placeholders/videos/motion-study.webm");
+  const videoSrc = publicAsset("/placeholders/videos/motion-study.mp4");
   return {
     id: `video-${number}`,
     titleEn: `MOTION STUDY ${number}`,

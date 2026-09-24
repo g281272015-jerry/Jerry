@@ -1,7 +1,7 @@
 import { publicAsset } from "../utils/publicAsset.js";
 
 const ip1 = (number) =>
-  publicAsset(`/portfolio/ip1/ip_${String(number).padStart(2, "0")}.png`);
+  publicAsset(`/portfolio/ip1/ip_${String(number).padStart(2, "0")}.jpg`);
 
 // IP1 —— 9 张图全部展开在同一根 AccordionGallery 书架轨道上。
 // 标题先用占位（IP WORKS / IP 作品），要换真实名字直接改下面数组。

@@ -31,7 +31,7 @@ export function makeSingleImageItems({
       title: sourceName ? formatSourceTitle(sourceName) : `${titlePrefix} ${number}`,
       titleCn: sourceName ? "" : `${titleCnPrefix} ${number}`,
       tag,
-      cover: `${basePath}/look-${number}.png`,
+      cover: `${basePath}/look-${number}.jpg`,
       images: [],
     };
   });

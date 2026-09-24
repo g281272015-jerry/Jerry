@@ -200,7 +200,7 @@ export default function OutroVideo() {
           playsInline
           {...deferredVideoProps}
         >
-          <source src={publicAsset("/placeholders/videos/outro-loop.webm")} type="video/webm" />
+          <source src={publicAsset("/placeholders/videos/outro-loop.mp4")} type="video/mp4" />
         </video>
 
         {deviceUiStyle && (
